@@ -1,0 +1,3 @@
+file: bar.txt
+line1: Omage 
+line2: Mango
