@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CatImpl implements Cat {
-    public void cat(OutputStream output, OutputStream error, InputStream... inputs) {
-
-
-    }
+public class CatMain {
 
     public void list(String... inputs) {
 
