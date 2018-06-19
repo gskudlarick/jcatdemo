@@ -19,14 +19,14 @@ public class CatImpl implements Cat {
 
     public static void main(String[] args) {
 
-        boolean debug = true;
+        boolean debug = false;
         if ( !debug && args.length ==0) {
             System.out.println("usage:  cat [file ...]");
             return;
         }
 
-        String[] fileNames  = { "dummy.txt", "foo.txt", "bar.txt"};
-        //String[] fileNames;  =  args;
+        //String[] fileNames  = { "dummy.txt", "foo.txt", "bar.txt"};
+        String[] fileNames  =  args;
         // get from CLI
         if(debug) {
             System.out.println("CLI Args: " + args.length);
@@ -94,46 +94,6 @@ public class CatImpl implements Cat {
         InputStream[] streams = inputStreams.toArray( new InputStream[inputStreams.size()]);
         misr.cat(outputStream, errorStream,streams);
 
-        //System.out.println("*** OK GREG");
-
-
-        // Working Individual File  -- Close here.
-        /*
-        try {
-            try (FileInputStream fis = new FileInputStream(new File(fileNames[0]))){
-                //fis = new FileInputStream(new File("foo.txt"));
-                InputStream[] inputstreams = new InputStream[2];
-                inputstreams[0] = fis;
-                misr.cat(fis);
-            } catch (FileNotFoundException e) {
-                System.out.println("Error reading file: " + e.getMessage());
-            }
-        } catch (IOException e) {
-            System.out.println("Error Opening File: " +  e.getMessage() );
-        }
-        */
-
-
-        /**
-         * 1. Old School File, FileReader, BufferedReader
-         */
-        /*
-        System.out.println("\n\nOld School");
-        File file = new File("foo.txt");
-        try (BufferedReader br = new BufferedReader( new FileReader(file))){
-            //FileReader fr = new FileReader(file);
-            String line;
-            while( (line = br.readLine()) != null) {
-                System.out.println(line);
-            };
-
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("File Not Found: " + file.toString());
-        } catch(IOException e) {
-            System.out.println("Unable to read file: " + file.toString());
-        }
-        */
 
 
     }
