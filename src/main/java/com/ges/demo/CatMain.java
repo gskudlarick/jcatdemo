@@ -7,64 +7,53 @@ import java.util.List;
 
 public class CatMain {
 
-    public void list(String... inputs) {
 
-        Arrays.asList(inputs).forEach( item -> System.out.println(item));
-
-    }
-
+    /**
+     * Main for running on local system
+     * @param args
+     */
     public static void main(String[] args) {
 
-        boolean debug = false;
-        if ( !debug && args.length ==0) {
+        if (args.length == 0) {
             System.out.println("usage:  cat [file ...]");
             return;
         }
 
-        //String[] fileNames  = { "dummy.txt", "foo.txt", "bar.txt"};
-        String[] fileNames  =  args;
-        // get from CLI
-        if(debug) {
-            System.out.println("CLI Args: " + args.length);
-            Arrays.stream(fileNames).forEach((fileName) -> {
-                System.out.println(fileName);
-            });
-        }
+        String[] fileNames = args;
 
         /*
-        * TODO  --Mimic Cat command
-        *  1. print usage notes if no CLA's
-        *  2. print error message if not files.
-        *  3. Cases
-        *   3.0 Multiple files just like linux cat command.
-        *   3.1 local path
-        *   3.2 Relative path
-        *   3.4 Mac vs Windows file paths.
-        *
-        *  4. Java x.. 8 Features
-        *   Lambda
-        *   foreach
-        *   Reference Args
-        *   Try with Resources
-        *   Java 8 file NIO.  Java Path.
-        *
-        *  5. Unit tests
-        *   -Mockito
-        *   -Junit 5 with paramaterized types, assertGroups, Lambdas
-        *
-        *
-        *   TODO: APPROACH
-        *    1- Basic with Streams and code in main
-        *    2. Convert to Java Paths, 8 NIO
-        *    3. Move to class
-        *    4. Error handling
-        *    5. Fun with Tests.
-        *    6. Git deploy with readme.
-        *       -test on windows follow instructions
-        *       -Mac install script
-        *       -alias jcat .. YO.  sudo maybe.
-        *
-        */
+         * TODO  --Mimic Cat command
+         *  1. print usage notes if no CLA's
+         *  2. print error message if not files.
+         *  3. Cases
+         *   3.0 Multiple files just like linux cat command.
+         *   3.1 local path
+         *   3.2 Relative path
+         *   3.4 Mac vs Windows file paths.
+         *
+         *  4. Java 7 - 8 Features where possible
+         *   Files.lines(Path) -> Stream
+         *   Lambda
+         *   foreach
+         *   Reference Args
+         *   Try with Resources
+         *
+         *  5. Unit tests
+         *   -Mockito if needed.
+         *   -Junit 5 with paramaterized tests , assertGroups, Lambdas
+         *
+         *
+         *   TODO: APPROACH
+         *    1- Basic with Streams and code in main
+         *    2. Convert to Java Paths, 8 NIO if possible
+         *    3. Move to class
+         *    4. Error handling
+         *    5. Fun with Tests.
+         *    6. Git deploy with readme.
+         *       -test on windows follow instructions
+         *       -Mac install script
+         *
+         */
 
         OutputStream outputStream;
         outputStream = System.out;
@@ -72,24 +61,27 @@ public class CatMain {
         OutputStream errorStream;
         errorStream = System.err;
 
-
-        //System.out.println("*** OK GREG");
-        MyInputStreamReader misr = new MyInputStreamReader();  // CUT
+        MyInputStreamReader misr = new MyInputStreamReader();
         List<InputStream> inputStreams = new ArrayList<>();
 
-        Arrays.stream(fileNames).forEach( (fileName) -> {
-            //System.out.println("Building Stream for file: " +fileName);
+        /**
+         * Build List of InputStreams to pass to Impl.
+         */
+        Arrays.stream(fileNames).forEach((fileName) -> {
             try {
                 FileInputStream fis = new FileInputStream(new File(fileName));
                 inputStreams.add(fis);
             } catch (FileNotFoundException e) {
-                System.out.println("File not found:" +  e.getMessage());
-                //e.printStackTrace();
+                System.out.println("File not found:" + e.getMessage());
             }
         });
-        InputStream[] streams = inputStreams.toArray( new InputStream[inputStreams.size()]);
-        misr.cat(outputStream, errorStream,streams);
 
+        /**
+         * Convert List back to Array and call cat.
+         *  -Converted to List, then back to Array.  Can do either way. --Probably faster to keep as Array.
+         */
+        InputStream[] streams = inputStreams.toArray(new InputStream[inputStreams.size()]);
+        misr.cat(outputStream, errorStream, streams);
 
 
     }
