@@ -21,6 +21,6 @@
  ## Features to Implement
  - [ ] **Convert to Junit 5** [Junit 5](https://junit.org/junit5/docs/current/user-guide/)  Add more unit tests
  - [ ] **Add Mockito Tests** ..
- - [ ] **Add Fitnesse Functinal Tests** ..
+ - [ ] **Add Fitnesse Functional Tests** ..
 
  
