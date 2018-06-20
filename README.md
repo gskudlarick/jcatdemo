@@ -6,7 +6,7 @@
 
 ## To Build and Run the project
 
-* In a terminal window:.
+* In a terminal window on Mac, Linux, or git bash on Windows:.
 ``` sh
   >git clone https://github.com/gskudlarick/jcatdemo.git
   >cd jcatdemo
