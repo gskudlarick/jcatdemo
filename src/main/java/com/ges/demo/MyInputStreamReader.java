@@ -8,8 +8,14 @@ public class MyInputStreamReader implements Cat {
 
 
         /**
-         * TODO Note: Would like ot use Java 8 NIO Files.list(Path) Files.lines(Path) <- Streams
-         * but cant as were given Streams in the exercise  to make better challenge
+         *  TODO: Summarize  NIO vs. IO
+         *   -This uses Java I/O which is stream based, good for Few Threads large data sets :Traditional servers
+         *   -NIO is buffer based, good for handling multiple connections in single thread with small data sets.
+         *    -but can get more complex.
+         *    -Java 8 has good NIO support Files returning Streams
+         *      -Files.list() returns steam of files.
+         *      -Files.lines() returns stream with lines of files.
+         *      e.g. https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-
          */
 
         OutputStreamWriter osw = new OutputStreamWriter(os);
