@@ -8,8 +8,8 @@
 
 * In a terminal window:.
 ``` sh
-  >mkdir my-proj
   >git clone https://github.com/gskudlarick/jcatdemo.git
+  >cd jcatdemo
   >mvn clean install
   >java -jar target/ks-cat-1.0-SNAPSHOT.jar foo.txt bar.txt bad-file.txt
   >./run.sh  (or script to run it)
