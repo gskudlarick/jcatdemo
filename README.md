@@ -6,7 +6,9 @@
 
 ## To Build and Run the project
 
-* In a terminal window on Mac, Linux, or git bash on Windows:.
+* In a terminal window on Mac, Linux, or git bash on Windows
+* Required Installations:
+  * Maven, Java 8
 ``` sh
   >git clone https://github.com/gskudlarick/jcatdemo.git
   >cd jcatdemo
