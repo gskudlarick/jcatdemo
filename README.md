@@ -11,7 +11,7 @@
   >mkdir my-proj
   >git clone https://github.com/gskudlarick/jcatdemo.git
   >mvn clean install
-  >java -jar target/ks-cat-1.0-SNAPSHOT.jar foo.txt bar.txt bad-file.txt
+  >java -jar target/ks-cat-1.0-SNAPSHOT.jar src/data/foo.txt src/data/bar.txt bad-file.txt
   >./run.sh  (or script to run it)
 ```
 
